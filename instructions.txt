@@ -1,0 +1,31 @@
+mkdir tunr_project
+cd tunr_project
+pipenv shell
+pipenv install django
+pipenv install psycopg2-binary
+pipenv run django-admin startproject tunr_django .
+ django-admin startapp tunr
+
+ INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'tunr'
+]
+
+brew services list
+touch settings.sql
+psql -f settings.sql
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tunr',
+        'USER': 'tunruser',
+        'PASSWORD': 'tunr',
+        'HOST': 'localhost'
+    }
+}
